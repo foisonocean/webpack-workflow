@@ -1,6 +1,8 @@
 import { delayTime } from './shared/constants'
 import worlds from './demo/worlds'
 
+import './../css/demo.css'
+
 const obj = document.querySelector('#demo')
 let index = 0
 
