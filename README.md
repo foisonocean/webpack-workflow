@@ -32,6 +32,6 @@ Each `html` file **can only have one** entry point.
 ## Todos
 
 - [x] basic webpack config
-- [ ] handle styles
+- [x] handle styles
 - [ ] LESS、SASS、POSTCSS
 - [ ] CSS Modules
