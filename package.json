@@ -1,0 +1,39 @@
+{
+  "name": "webpack-workflow",
+  "version": "0.0.1",
+  "description": "a webpack workflow to quick start a project.",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foisonocean/webpack-workflow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/foisonocean/webpack-workflow/issues"
+  },
+  "homepage": "https://github.com/foisonocean/webpack-workflow",
+  "author": "foisonocean <foisonocean@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-class-properties": "^6.22.0",
+    "babel-plugin-transform-decorators": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "cross-env": "^3.1.4",
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard-jsx": "^3.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "lazy.js": "^0.5.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  }
+}
