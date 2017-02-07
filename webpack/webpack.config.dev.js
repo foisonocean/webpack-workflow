@@ -28,10 +28,19 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.resolve(__dirname, '../src/js')
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader?sourceMap',
+          'postcss-loader?sourceMap'
+        ]
       }
     ]
   },
   plugins: listOfHtmlWebpackPlugins.concat([
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin()
     // prints more readable module names in the browser console on HMR updates
   ]),
