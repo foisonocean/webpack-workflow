@@ -1,11 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const lazyEntryList = require('./generateEntries')
 const listOfHtmlWebpackPlugins = require('./generateHtmlEntries')
 
+const extractCSS = new ExtractTextPlugin('stylesheets/[name].css')
+
 const config = {
-  devtool: 'source-map',
+  devtool: false,
   entry: lazyEntryList.reduce((result, name) => Object.assign(
     {},
     result,
@@ -23,10 +26,18 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.resolve(__dirname, '../src/js')
+      },
+      {
+        test: /\.css$/,
+        use: extractCSS.extract([
+          'css-loader',
+          'postcss-loader'
+        ])
       }
     ]
   },
   plugins: listOfHtmlWebpackPlugins.concat([
+    extractCSS,
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
