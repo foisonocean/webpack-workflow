@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 const { devServerPort } = require('./constant')
 const lazyEntryList = require('./generateEntries')
@@ -7,13 +8,13 @@ const listOfHtmlWebpackPlugins = require('./generateHtmlEntries')
 
 const config = {
   devtool: 'source-map',
-  entry: lazyEntryList.reduce((result, name) => Object.assign(
+  entry: lazyEntryList.reduce((result, { name, extension }) => Object.assign(
     {},
     result,
     {
       [name]: [
         `webpack-dev-server/client?http://0.0.0.0:${devServerPort}`,
-        path.resolve(__dirname, `../src/js/${name}.js`)
+        path.resolve(__dirname, `../src/js/${name}.${extension}`)
       ]
     }
   ), {}),
@@ -22,12 +23,19 @@ const config = {
     filename: '[name].js',
     publicPath: '/'
   },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
         include: path.resolve(__dirname, '../src/js')
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.css$/,
@@ -40,6 +48,7 @@ const config = {
     ]
   },
   plugins: listOfHtmlWebpackPlugins.concat([
+    new CheckerPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin()
     // prints more readable module names in the browser console on HMR updates

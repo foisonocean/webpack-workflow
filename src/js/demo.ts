@@ -1,9 +1,9 @@
-import { delayTime } from './shared/constants'
-import worlds from './demo/worlds'
+import { delayTime } from './shared/constants.js'
+import worlds from './demo/words'
 
 import './../css/demo.css'
 
-const obj = document.querySelector('#demo')
+const obj: HTMLElement = document.querySelector('#demo') as HTMLElement
 let index = 0
 
 setInterval(() => {

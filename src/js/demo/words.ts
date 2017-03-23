@@ -1,4 +1,9 @@
-export default [
+interface Word {
+  name: string,
+  color: string
+}
+
+const listOfWords: Word[] = [
   {
     name: 'hello, webpack!',
     color: '#666'
@@ -16,3 +21,5 @@ export default [
     color: 'yellow'
   }
 ]
+
+export default listOfWords
