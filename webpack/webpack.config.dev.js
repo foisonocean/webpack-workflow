@@ -57,6 +57,7 @@ const config = {
     host: '0.0.0.0',
     port: devServerPort,
     compress: true,
+    contentBase: path.resolve(__dirname, '../static'),
     stats: 'minimal'
   }
 }
