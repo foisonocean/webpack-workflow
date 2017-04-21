@@ -14,7 +14,12 @@ const config = {
     {},
     result,
     {
-      [name]: path.resolve(__dirname, `../src/js/${name}.${extension}`)
+      [name]: extension === 'js'
+      ? [
+        'babel-polyfill',
+        path.resolve(__dirname, `../src/js/${name}.${extension}`)
+      ]
+      : path.resolve(__dirname, `../src/js/${name}.${extension}`)
     }
   ), {}),
   output: {

@@ -12,7 +12,13 @@ const config = {
     {},
     result,
     {
-      [name]: [
+      [name]: extension === 'js'
+      ? [
+        `webpack-dev-server/client?http://0.0.0.0:${devServerPort}`,
+        'babel-polyfill',
+        path.resolve(__dirname, `../src/js/${name}.${extension}`)
+      ]
+      : [
         `webpack-dev-server/client?http://0.0.0.0:${devServerPort}`,
         path.resolve(__dirname, `../src/js/${name}.${extension}`)
       ]
